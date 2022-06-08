@@ -1,0 +1,161 @@
+{% extends 'student/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'student/css/common.css' %}">
+
+{% endblock css %}
+
+{% block content %}
+
+
+
+
+<div class="container" >
+<marquee  behavior="" direction="" class="text-danger"><b>*St. Aloysius International University website "UNDER MAINTENANCE" please check your results below. Thank You!</b></marquee>
+
+<H3 class="text-black" id='alumni'>ALUMNI </H3>
+
+<p>
+    St Aloysius International University boasts of a successful alumnus, where our students have reached great heights in both professional and personal lives. They have procured gastul employment in some of the most lucrative companies all over the world. Our unique learning experience and helps maximize your employment prospects, and seperate you from the rest of the crowd SAR provides fertile grounds to determine and explore co-cumcular activities, which are just as valuable as a good educating training in securing lucrative employment prospects
+</p>
+
+
+<div class="container row-3">
+    <p class="font-weight-bold">Enrollment No.</p>
+    <div class="col-sm-3">
+        <form action="" method="post">
+          {% csrf_token %}
+          <input name="enrollment_no" type="text" class="form-control" placeholder="Search Enrollment No" required>
+          <button type="submit" class="btn btn-primary my-1 ">Search</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% if semesters %}
+<div class="container-row">
+  <h3 class="text-center">Alumni Details</h3>
+  <p class="text-end ">Please verify Marks Sheet / Certificate </p>
+  <button class="btn-primary" onclick="myfunc('divone', 'divthree','mylogo')">PRINT</button>
+<hr>
+</div>
+
+
+
+<!-- PRINT SCRIPPT 1 -->
+<script type="text/javascript">
+  function myfunc(divone, divthree,mylogo){
+      var backup = document.body.innerHTML;
+      var divone = document.getElementById(divone).innerHTML;
+  //    var divtwo = document.getElementById(divtwo).innerHTML;
+      var divthree = document.getElementById(divthree).innerHTML;
+      var mylogo = document.getElementById(mylogo).innerHTML;
+      console.log(divone)
+      // console.log(type(divone))
+      // document.body.innerHTML =  divone+divthree;
+      document.body.innerHTML =  mylogo+divone+divthree;
+      window.print();
+      document.body.innerHTML = backup;
+  }
+</script>
+
+<div id='mylogo' >
+  <img class='img-fluid mx-auto pt-2 d-block' src="{% static 'student/image/logo2.png' %}" alt="CoolBrand">
+</div>
+
+<div class="container-row my-3">
+  <div class="row justify-content-md-auto" id='divone'>
+
+      {% if profile.profile_pic %}
+  
+      <div class="col-2">
+          <div class="text-center">
+              <div class="card-group" width="100%">
+                  <div class="card" >
+                
+                    <img class="card-img-top" id='profile_pic' src="{{profile.profile_pic.url}}" alt="Alumni Image 211*180">      
+  
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endif %}
+
+
+
+      <div id='divtwo' class="col-8">
+         <b> Enrollment No   :</b> {{profile.enrollment_no}} <br>
+         <b> Name            :</b> {{profile.name}} <br>
+         <b> Father's Name   :</b> {{profile.father_name}} <br>
+         <b> Course          :</b> {{profile.course}} <br>
+         <b> Specialization  :</b> {{profile.specialization}} <br>
+         <b> academic_year   :</b> {{profile.academic_year}} <br>
+         <b> Year of Passing :</b> {{profile.year_of_passing}} <br>
+      </div>
+  </div>
+  <hr>
+</div >
+
+
+
+<div id='divthree' class="container-row ">
+  <table class="table table-bordered border-secondary ">
+      <thead><b> Statement of Marks </b></thead>
+      <thead>
+          <tr>
+            <th scope="row">Particulars</th>
+            <th>Max</th>
+            <th>Min</th>
+            <th>Obtained</th>
+            <th>Remarks</th>
+          </tr>
+      </thead>
+
+      {% for sem in semesters %}
+
+      <tbody>
+        <tr>
+          <th scope="col">{{sem.particular}} </th>
+          <td>{{sem.max_marks}}</td>
+          <td>{{sem.min_marks}}</td>
+          <td>{{sem.obtained}}</td>
+          <td>{{sem.remarks}}</td>
+        </tr>
+      </tbody>  
+      {% endfor %}  
+      
+
+      <tbody>
+          <tr>
+            <th scope="col">  </th>
+            <td>{{total_max_marks}}</td>
+            <td>{{total_min_marks}}</td>
+            <td>{{total_obtained_marks}}</td>
+            <td>{{student_percentage}}%</td>
+          </tr>
+      </tbody> 
+      <tbody>
+          <tr>
+            <th scope="col">  </th>
+            <td> </td>
+            <td> </td>
+            <td><b> GRADE: </b></td>
+            <td>{{grade}}</td>
+          </tr>
+      </tbody>
+  </table>
+  {% endif %}
+</div>
+
+
+<div class="container">
+  <footer class="pt-4 mt-5 ">
+   
+    <p class="text-center text-muted"> If you have any query please mail us to <a href="mailto:administrator@saiu-edu.in">administrator@saiu-edu.in</a></p>
+  </footer>
+</div>
+</div>
+
+{% endblock content %}
