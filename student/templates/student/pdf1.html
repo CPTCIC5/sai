@@ -33,23 +33,27 @@
             left: 500px;
             top: 200px;
         }
+        p{
+            margin-left: 100px;
+        }
     </style>
 </head>
 <body>
     <h1 class="title">{{myvar.title}}</h1>
-    <div class="container">
+    <div class="container" style="margin-left: 200px;">
         <img src="{{myvar.image.path}}" alt="" class="photo">
-        <div class="details_container">
-            <h2 class="date">Date- {{myvar.date}}</h2>
-            <h2 class="time">Time- {{myvar.time}}</h2>
-            <h2 class="reg_num">Registration Number- {{myvar.reg_no}}</h2>
-            <h2 class="name">Name- {{myvar.name}}</h2>
-            <h2 class="gate_paper">GATE Paper- {{myvar.paper}}</h2>
-            <h2 class="examcenter">Exam Center({{myvar.exam_centre}})</h2>
-        </div>
+            <div class="details_container" style="margin-left: 70px;">
+                <h2 class="date">Date- {{myvar.date}}</h2>
+                <h2 class="time">Time- {{myvar.time}}</h2>
+                <h2 class="reg_num">Registration Number- {{myvar.reg_no}}</h2>
+                <h2 class="name">Name- {{myvar.name}}</h2>
+                <h2 class="gate_paper">GATE Paper- {{myvar.paper}}</h2>
+                <h2 class="examcenter">Exam Center({{myvar.exam_centre}})</h2>
+            </div>
+       
     </div>
     <hr>
-    <h3><strong>Instructions to the candidate</strong></h3>
+    <h3 style="text-align: center;"><strong>Instructions to the candidate</strong></h3>
     <p>1.This Admit card must be presented for the verification at the time of examination,along with atleast one <br>
     original(not photcopied or scanned copy) and valid (not expired) <strong>photo identification card</strong> (e.g: <br>
     College ID,Employer ID,Driving License,Passport,PAN Card,Voter ID,Aadhar Card-UID,etc.</I></p>

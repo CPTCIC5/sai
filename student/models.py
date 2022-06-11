@@ -244,3 +244,9 @@ class IdCard(models.Model):
 
     class Meta:
         ordering=['-id']
+
+class ResultHideUnHide(models.Model):
+    display=models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"RESULTDISPAY-{self.display}"

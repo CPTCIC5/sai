@@ -5,7 +5,7 @@ from .models import Certificate,IdCard,AdmitCard
 admin.site.register(Certificate)
 admin.site.register(IdCard)
 admin.site.register(AdmitCard)
-
+admin.site.register(ResultHideUnHide)
 
 # from import_export.admin import ImportExportModelAdmin
 

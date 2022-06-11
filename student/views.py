@@ -154,7 +154,8 @@ def certified_courses(request):
     return render(request, 'student/certified_courses.html',context)
 
 def home2(request):
-    return render(request, 'student/home2.html')
+    x1=ResultHideUnHide.objects.get(id=1)
+    return render(request, 'student/home2.html',{'x1':x1})
 
 def alumini(request):
     return render(request, 'student/alumini.html')

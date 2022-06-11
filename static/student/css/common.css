@@ -38,19 +38,21 @@
 .glow_button {
   background-color: #1c87c9;
   -webkit-border-radius: 60px;
-  border-radius: 60px;
+  border-radius: 40px;
   border: none;
   color: #eeeeee;
   cursor: pointer;
   display: inline-block;
   font-family: sans-serif;
   font-size: 20px;
-  padding: 5px 10px;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
-  margin-top: 10px;
+  margin-left: 10px;
 }
-
+.nav-link{
+  margin-left: 10px;
+}
 @keyframes glowing {
 0% {
   background-color: #2ba805;
@@ -118,6 +120,9 @@
     flex-direction: row !important;
     gap: 10px;
     flex-wrap: nowrap;
+  }
+  .navbar-nav{
+    margin-left: 0;
   }
 }
 

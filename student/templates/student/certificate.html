@@ -46,6 +46,12 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+/* @media only screen and (max-width:426px){
+  .certificate-inp{
+    width: 100%;
+  }
+} */
 </style>
 
 {% endblock css %}
@@ -61,12 +67,12 @@ CERTIFICATIONS
 
 {% block para %}
 
-<div class="container row-3 flex flex">
+<div class="container-fluid">
   <p class="font-weight-bold">Enrollment No.</p>
   <div class="col-sm-3">
       <form method="post">
         {% csrf_token %}
-        <input name="searched" type="text" class="form-control-lg" placeholder="CenterID or EnrollmentID" required>
+        <input name="searched" type="text" class="form-control-lg certificate-inp" placeholder="CenterID or EnrollmentID" required>
         <button type="submit" class="btn btn-primary my-1 ">Search</button>
       </form>
   </div>
@@ -149,7 +155,7 @@ CERTIFICATIONS
             <div class="container">
             <div class="row">
               <div class="col">
-              <a class="btn btn-dark text-primary " href="{% url 'certification-pdf-view' certificate.enrollment_no %}" role="button">Download</a>
+              <a class="btn btn-dark text-light " href="{% url 'certification-pdf-view' certificate.enrollment_no %}" role="button">Download</a>
             </div>
           </div>
           </div>

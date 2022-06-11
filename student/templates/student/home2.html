@@ -10,6 +10,7 @@
 
 {% block content %}
 
+
   <!--<div id="Services-boxs">
   <div class="services-boxs">		<div class="moduletable">
             
@@ -28,8 +29,8 @@
   </div>-->
 <!-- End Services -->
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="z-index: 0;">
-  <div class="carousel-inner">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+  <div class="carousel-inner" style="z-index: -1;">
     <div class="carousel-item active">
       <img src="{% static 'student/image/slide1.jpg' %}" class="d-block w-100" alt="...">
     </div>
@@ -214,7 +215,7 @@
           </div>
         </div>
       </div>
-
+      {% if x1.display != False %}
       <div class="row">
         <div class="col-12">
           <div class="bg-light rounded-3">
@@ -232,7 +233,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>      
+      {% endif %}
+
     </div>
   </div>
 </div>
