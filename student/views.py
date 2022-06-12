@@ -106,7 +106,7 @@ def certificate(request):
         except Exception as e:
             messages.warning(request,'Please enter valid Center ID or Name')
             return render(request,'student/certificate.html')
-    return render(request,'student/certificate.html',{'certificates':certificates})
+    return render(request,'student/certificate.html')
 
 #def certificate
 def certificate_render_pdf_view(request,en_no):

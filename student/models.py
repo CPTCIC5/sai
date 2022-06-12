@@ -204,6 +204,7 @@ class AdmitCard(models.Model):
     name=models.CharField(max_length=200)
     paper=models.CharField(max_length=200)
     exam_centre=models.CharField(max_length=200)
+    instruction=models.TextField()
 
     def __str__(self):
         return f"{self.enrollment_no} - {self.date}"
@@ -230,7 +231,6 @@ class Certificate(models.Model):
 
 class IdCard(models.Model):
     enrollment_no=models.CharField(max_length=40,unique=True)
-    title=models.CharField(max_length=100,blank=True,default='ST.ALOYSIUS INTERNATIONAL UNIVERSITY')
     image=models.ImageField(upload_to='idcard',blank=True)
     name=models.CharField(max_length=100)
     fathers_name=models.CharField(max_length=100)
