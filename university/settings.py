@@ -78,17 +78,18 @@ WSGI_APPLICATION = 'university.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-"""
+
 DATABASES={
    'default':{
       'ENGINE':'django.db.backends.postgresql_psycopg2',
-      'NAME':'juned_db',
-      'USER':'root',
+      'NAME':'university',
+      'USER':'postgres',
       'PASSWORD':'Iamreal123',
-      'HOST':'localhost',
+      'HOST':'database-1.cb2mm6hbfw9b.us-east-1.rds.amazonaws.com',
       'PORT':'5432',
    }
 }
+#      'NAME':'juned_db',
 """
 DATABASES = {
     'default': {
@@ -96,14 +97,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+"""
 
 
 # Password validation

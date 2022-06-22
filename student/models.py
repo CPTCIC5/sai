@@ -194,6 +194,7 @@ class Course_desc(models.Model):
 #         return self.semester    
 
 
+
 class AdmitCard(models.Model):
     enrollment_no=models.CharField(max_length=40,unique=True)
     image=models.ImageField(upload_to='admitcard',blank=True)
@@ -220,7 +221,7 @@ class Certificate(models.Model):
     period_to=models.CharField(max_length=100)
     place=models.CharField(max_length=100)
     date=models.CharField(max_length=100)
-    center_id=models.CharField(max_length=4,blank=False)
+    center_id=models.CharField(max_length=100)
     file=models.FileField(blank=True,null=True)
     
     def __str__(self):
@@ -250,3 +251,4 @@ class ResultHideUnHide(models.Model):
 
     def __str__(self):
         return f"RESULTDISPAY-{self.display}"
+

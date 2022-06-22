@@ -1,6 +1,6 @@
 from django.contrib import admin
 from student.models import *
-from .models import Certificate,IdCard,AdmitCard
+
 
 admin.site.register(Certificate)
 admin.site.register(IdCard)
