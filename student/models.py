@@ -36,7 +36,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=100)
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=100)
     query = models.TextField()
 
     def __str__(self):
@@ -54,7 +54,7 @@ class Apply(models.Model):
 
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=100)
     subject = models.CharField(max_length=100)
     applying_for = models.CharField(max_length=50,choices = REMARKS)
     query = models.TextField()
