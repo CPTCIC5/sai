@@ -6,6 +6,7 @@ admin.site.register(Certificate)
 admin.site.register(IdCard)
 admin.site.register(AdmitCard)
 admin.site.register(ResultHideUnHide)
+admin.site.register(ResultStyleHideUnHide)
 
 # from import_export.admin import ImportExportModelAdmin
 

@@ -1,4 +1,5 @@
 import csv
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,get_object_or_404
 from student.models import *
 from django.contrib import messages
@@ -10,10 +11,12 @@ from xhtml2pdf import pisa
 from django.db.models import Q
 
 def home(request):
-    return render(request, 'student/base.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/base.html',{'x2':x2})
 
 
 def result(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
 
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
@@ -57,7 +60,7 @@ def result(request):
 
             
 
-            context = {'semesters':sem,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade}
+            context = {'semesters':sem,'x2':x2,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade}
 
 
             return render(request, 'student/result.html', context)
@@ -65,38 +68,45 @@ def result(request):
         except Exception as e:
             messages.warning(request, 'Please enter correct enrollment number!!')
 
-            return render(request, 'student/result.html')
+            return render(request, 'student/result.html',{'x2':x2})
     # messages.success(request, 'Your profile was updated.')
-    return render(request, 'student/result.html')
+    return render(request, 'student/result.html',{'x2':x2})
 
 def courses(request):
-    return render(request, 'student/courses.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/courses.html',{'x2':x2})
 
 
 
 def home(request):
-    return render(request, 'student/home.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/home.html',{'x2':x2})
 
 
 def about(request):
-    return render(request, 'student/about.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/about.html',{'x2':x2})
 
 
 def faith(request):
-    return render(request, 'student/faith.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/faith.html',{'x2':x2})
 
 def md_message(request):
-    return render(request, 'student/md_message.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/md_message.html',{'x2':x2})
 
 
 
 def health_science_courses(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     course_desc = Course_desc.objects.filter(branch="Health Science Courses")
-    context = {'course_desc':course_desc}
+    context = {'course_desc':course_desc,'x2':x2}
 
     return render(request, 'student/health_science_courses.html',context)
 
 def certificate(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     certificates=Certificate.objects.all()
     if request.method == 'POST':
         searched=request.POST.get('searched')
@@ -105,11 +115,12 @@ def certificate(request):
             return render(request,'student/certificate.html',{'queryset':queryset,'searched':searched})
         except Exception as e:
             messages.warning(request,'Please enter valid Center ID or Name')
-            return render(request,'student/certificate.html')
-    return render(request,'student/certificate.html')
+            return render(request,'student/certificate.html',{'x2':x2})
+    return render(request,'student/certificate.html',{'x2':x2})
 
 #def certificate
 def certificate_render_pdf_view(request,en_no):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     template_path = 'student/pdf3.html'
     queryset=get_object_or_404(Certificate,enrollment_no=en_no)
     context = {'myvar': queryset}
@@ -136,46 +147,57 @@ def certificate_render_pdf_view(request,en_no):
 
 
 def engineering_courses(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     course_desc = Course_desc.objects.filter(branch="Engineering Courses")
-    context = {'course_desc':course_desc}
+    context = {'course_desc':course_desc,'x2':x2}
 
     return render(request, 'student/engineering_courses.html',context)
     
 def management_courses(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     course_desc = Course_desc.objects.filter(branch="Management Courses")
-    context = {'course_desc':course_desc}
+    context = {'course_desc':course_desc,'x2':x2}
 
     return render(request, 'student/management_courses.html',context)
 
 def certified_courses(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     course_desc = Course_desc.objects.filter(branch="Certified Courses")
-    context = {'course_desc':course_desc}
+    context = {'course_desc':course_desc,'x2':x2}
 
     return render(request, 'student/certified_courses.html',context)
 
 def home2(request):
     x1=ResultHideUnHide.objects.get(id=1)
-    return render(request, 'student/home2.html',{'x1':x1})
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/home2.html',{'x1':x1,'x2':x2})
 
 def alumini(request):
-    return render(request, 'student/alumini.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/alumini.html',{'x2':x2})
 
 def academics(request):
-    return render(request, 'student/academics.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/academics.html',{'x2':x2})
 
 def library(request):
-    return render(request, 'student/library.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/library.html',{'x2':x2})
 
 def research(request):
-    return render(request, 'student/research.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/research.html',{'x2':x2})
 
 def global_option(request):
-    return render(request, 'student/global_option.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/global_option.html',{'x2':x2})
 
 def student_life(request):
-    return render(request, 'student/student_life.html')
+    x2=ResultStyleHideUnHide.objects.get(id=1)
+    return render(request, 'student/student_life.html',{'x2':x2})
 
 def contact_us(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     if request.method == 'POST':
         contact = Contact()
         name = request.POST.get('name')
@@ -193,9 +215,10 @@ def contact_us(request):
 
         return HttpResponse("THANKS FOR CONTACTING US <br> <p><a href='/'> HOME </a> </p>")
 
-    return render(request, 'student/contact_us.html')
+    return render(request, 'student/contact_us.html',{'x2':x2})
 
 def apply(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     if request.method =='POST':
         apply = Apply()
         name = request.POST.get('name')
@@ -215,9 +238,11 @@ def apply(request):
 
         return HttpResponse("THANKS FOR APPLYING FOR COURSES <br> <p><a href='/'> HOME </a> </p>")
 
-    return render(request, 'student/apply.html')
-    
-def export(request):    
+    return render(request, 'student/apply.html',{'x2':x2})
+
+@login_required   
+def export(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)  
     profiles = Profile.objects.all()
 
     # field names
@@ -249,7 +274,10 @@ def export(request):
     # return HttpResponse("done")
     return response
 
+
+@login_required
 def import_data(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     # if request.method == "POST":
     #     my_uploaded_file = request.FILES['my_uploaded_file']
     #     print(my_uploaded_file)
@@ -268,23 +296,24 @@ def import_data(request):
 
         # return render(request, 'student/import.html')
         
-    return render(request, 'student/import.html')
+    return render(request, 'student/import.html',{'x2':x2})
 
 
 
 def admitcard(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
         print(enrollment_no)
 
         try:
             admitcard = AdmitCard.objects.get(enrollment_no=enrollment_no)
-            return render(request,'student/admitcard.html',{'admitcard':admitcard})
+            return render(request,'student/admitcard.html',{'admitcard':admitcard,'x2':x2})
 
         except Exception as e:
             messages.warning(request, 'Please enter correct enrollment number!!')
-            return render(request, 'student/admitcard.html')
-    return render(request,'student/admitcard.html')
+            return render(request, 'student/admitcard.html',{'x2':x2})
+    return render(request,'student/admitcard.html',{'x2':x2})
 
 def admit_render_pdf_view(request,en_no):
     template_path = 'student/pdf1.html'
@@ -312,18 +341,19 @@ def admit_render_pdf_view(request,en_no):
     return response
 
 def idcard(request):
+    x2=ResultStyleHideUnHide.objects.get(id=1)
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
         print(enrollment_no)
 
         try:
             idcard= IdCard.objects.get(enrollment_no=enrollment_no)
-            return render(request,'student/idcard.html',{'idcard':idcard})
+            return render(request,'student/idcard.html',{'idcard':idcard,'x2':x2})
 
         except Exception as e:
             messages.warning(request, 'Please enter correct enrollment number!!')
-            return render(request, 'student/idcard.html')
-    return render(request,'student/idcard.html')
+            return render(request, 'student/idcard.html',{'x2':x2})
+    return render(request,'student/idcard.html',{'x2':x2})
 
 
 def idcard_render_pdf_view(request,en_no):

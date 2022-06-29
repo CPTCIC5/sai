@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 #CSRF_TRUSTED_ORIGINS = ['https://saiu-edu.in', 'https://www.saiu-edu.in']
@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     # 'import_export'
 ]
 
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -53,7 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'university.middleware.MaintenanceModeMiddleware',
+
 ]
+#MAINTENANCE_MODE = "xyz"
+#MAINTENANCE_BYPASS_QUERY = "xyz "
 
 ROOT_URLCONF = 'university.urls'
 
@@ -156,6 +163,9 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 # Adding media root directory and URL
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = '/admin'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

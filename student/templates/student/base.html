@@ -126,8 +126,11 @@
 
           <a class="nav-link active" href="/student_life">STUDENT LIFE</a>
           <a class="nav-link active" href="/contact_us">CONTACT US </a>
+          {% if x2.display != False %}
           <a class="glow_button" href="/result">RESULT </a>
-
+          {% else %}
+          <a class="nav-link active" href="/result">RESULT</a>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -256,7 +259,11 @@
               <a href="/contact_us" class="text-white">Contact Us</a>
             </li>
             <li>
+              {% if x2.display != False %}
               <a href="/result" class="glow_button text-white">Result</a>
+              {% else %}
+              <a href="/result" class="text-white">Result</a>
+              {% endif %}
             </li>
           </ul>
         </div>
