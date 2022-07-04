@@ -170,7 +170,10 @@ def certified_courses(request):
 def home2(request):
     x1=ResultHideUnHide.objects.get(id=1)
     x2=ResultStyleHideUnHide.objects.get(id=1)
-    return render(request, 'student/home2.html',{'x1':x1,'x2':x2})
+    x3=SiteDown.objects.get(id=1)
+    if x3.display == True:
+        return render(request,'error404.html')
+    return render(request, 'student/home2.html',{'x1':x1,'x2':x2,'x3':x3})
 
 def alumini(request):
     x2=ResultStyleHideUnHide.objects.get(id=1)
